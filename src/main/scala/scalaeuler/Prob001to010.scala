@@ -105,7 +105,22 @@ object Prob001to010 {
    *
    * Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
    */
-  def prob006: Long = ???
+  def prob006: Long = {
+    // see http://en.wikipedia.org/wiki/Triangular_number
+    val rangeSum = 100 * (100 + 1)/2
+    val squareOfSum = rangeSum * rangeSum
+
+    // see http://en.wikipedia.org/wiki/Square_pyramidal_number
+    val sumOfSquares = 100 * (100 + 1) * (2 * 100 + 1)/6
+    squareOfSum - sumOfSquares
+  }
+  def prob006_bruteforce = {
+    val range = 1L to 100L
+    val sumOfSquares = range.map { x => x * x }.sum
+    val rangeSum = range.sum
+    val squareOfSum = rangeSum * rangeSum
+    squareOfSum - sumOfSquares
+  }
 
   /**
    * 10001st prime
