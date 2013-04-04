@@ -2,6 +2,7 @@ package scalaeuler
 
 import Util.???
 import Maths.fibs
+import Maths.primes
 import scala.annotation.tailrec
 
 object Prob001to010 {
@@ -32,7 +33,6 @@ object Prob001to010 {
    * What is the largest prime factor of the number 600851475143 ?
    */
    def prob003: Long = {
-     import Maths.primes
      val num = 600851475143L
      val possiblePrimes = primes.takeWhile { p => p * p <= num }
      val primeFactors = possiblePrimes.filter { num % _ == 0 }
@@ -129,7 +129,7 @@ object Prob001to010 {
    * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
    * What is the 10 001st prime number?
    */
-  def prob007: Long = ???
+  def prob007: Long = primes(10000) // remember, the stream's index is zero based!
 
   /**
    * Largest product in a series
