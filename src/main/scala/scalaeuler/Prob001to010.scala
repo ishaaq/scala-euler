@@ -2,7 +2,7 @@ package scalaeuler
 
 import Util.???
 import Maths.fibs
-import Maths.primes
+import scala.annotation.tailrec
 
 object Prob001to010 {
   /**
@@ -32,6 +32,7 @@ object Prob001to010 {
    * What is the largest prime factor of the number 600851475143 ?
    */
    def prob003: Long = {
+     import Maths.primes
      val num = 600851475143L
      val possiblePrimes = primes.takeWhile { p => p * p <= num }
      val primeFactors = possiblePrimes.filter { num % _ == 0 }
@@ -65,7 +66,31 @@ object Prob001to010 {
    *
    * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
    */
-  def prob005: Long = ???
+  def prob005: Long = {
+    import Maths.lcm
+    def multiLcm(a: Long, xs: List[Long]): Long = xs match {
+      case Nil => a
+      case b::Nil => lcm(a, b)
+      case b::xs => multiLcm(lcm(a, b), xs)
+    }
+
+    multiLcm (1L, (2L to 20L).toList)
+  }
+  /* brue force method (slow): */
+  def prob005_bruteforce: Long = {
+    @tailrec
+    def isDivisibleByAll(l: Long, range: List[Long]): Boolean = { range match {
+      case Nil => true
+      case x::xs if l % x != 0 => false
+      case _::xs => isDivisibleByAll(l, xs)
+    }}
+
+    val twentyAndBelow = (20L to 2L by -1).toList // reverse order makes for more efficient looping
+
+    @tailrec
+    def findFirstDivisible(n: Long): Long = if (isDivisibleByAll(n, twentyAndBelow)) n else findFirstDivisible(n + 1)
+    findFirstDivisible(1)
+  }
 
   /**
    * Sum square difference

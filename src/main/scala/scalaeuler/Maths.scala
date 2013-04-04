@@ -19,4 +19,14 @@ object Maths {
 
     _isPrime(i, primes)
   }
+
+  /** Euclid's algorithm for gcd calculation */
+  @tailrec
+  def gcd(a: Long, b: Long): Long = {
+    if (a == 0 || b == 0) a + b
+    else if (a < b) gcd(a, b % a)
+    else gcd (b, a % b)
+  }
+
+  def lcm(a: Long, b: Long): Long = a * b / gcd(a, b)
 }
