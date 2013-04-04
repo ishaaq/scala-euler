@@ -10,7 +10,7 @@ object Prob001to010 {
    * If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
    * Find the sum of all the multiples of 3 or 5 below 1000.
    */
-  def prob001:Long = ???
+  def prob001: Long = ???
 
   /**
    * Even Fibonacci numbers
@@ -20,7 +20,7 @@ object Prob001to010 {
    * 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
    * By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
    */
-  def prob002:Long = ???
+  def prob002: Long = ???
 
   /**
    * Largest prime factor
@@ -29,7 +29,7 @@ object Prob001to010 {
    * The prime factors of 13195 are 5, 7, 13 and 29.
    * What is the largest prime factor of the number 600851475143 ?
    */
-  def prob003:Long = ???
+  def prob003: Long = ???
 
   /**
    * Largest palindrome product
@@ -38,7 +38,7 @@ object Prob001to010 {
    * A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 99.
    * Find the largest palindrome made from the product of two 3-digit numbers.
    */
-  def prob004:Long = ???
+  def prob004: Long = ???
 
   /**
    * Smallest multiple
@@ -48,7 +48,7 @@ object Prob001to010 {
    *
    * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
    */
-  def prob005:Long = ???
+  def prob005: Long = ???
 
   /**
    * Sum square difference
@@ -63,7 +63,7 @@ object Prob001to010 {
    *
    * Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
    */
-  def prob006:Long = ???
+  def prob006: Long = ???
 
   /**
    * 10001st prime
@@ -72,7 +72,7 @@ object Prob001to010 {
    * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
    * What is the 10 001st prime number?
    */
-  def prob007:Long = ???
+  def prob007: Long = ???
 
   /**
    * Largest product in a series
@@ -101,7 +101,7 @@ object Prob001to010 {
    *           05886116467109405077541002256983155200055935729725
    *           71636269561882670428252483600823257530420752963450
    */
-  def prob008:Long = ???
+  def prob008: Long = ???
 
   /**
    * Special Pythagorean triplet
@@ -114,7 +114,7 @@ object Prob001to010 {
    * There exists exactly one Pythagorean triplet for which a + b + c = 1000.
    * Find the product abc.
    */
-  def prob009:Long = ???
+  def prob009: Long = ???
 
   /**
    * Summation of primes
@@ -124,5 +124,5 @@ object Prob001to010 {
    *
    * Find the sum of all the primes below two million.
    */
-  def prob010:Long = ???
+  def prob010: Long = ???
 }
