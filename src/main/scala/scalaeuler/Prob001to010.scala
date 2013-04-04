@@ -2,6 +2,7 @@ package scalaeuler
 
 import Util.???
 import Maths.fibs
+import Maths.primes
 
 object Prob001to010 {
   /**
@@ -30,7 +31,12 @@ object Prob001to010 {
    * The prime factors of 13195 are 5, 7, 13 and 29.
    * What is the largest prime factor of the number 600851475143 ?
    */
-  def prob003: Long = ???
+   def prob003: Long = {
+     val num = 600851475143L
+     val possiblePrimes = primes.takeWhile { p => p * p <= num }
+     val primeFactors = possiblePrimes.filter { num % _ == 0 }
+     primeFactors.last
+   }
 
   /**
    * Largest palindrome product
