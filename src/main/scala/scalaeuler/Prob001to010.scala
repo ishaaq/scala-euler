@@ -1,6 +1,7 @@
 package scalaeuler
 
 import Util.???
+import Maths.fibs
 
 object Prob001to010 {
   /**
@@ -20,7 +21,7 @@ object Prob001to010 {
    * 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
    * By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
    */
-  def prob002: Long = ???
+  def prob002: Long = fibs.filter(_ % 2 == 0).takeWhile(_ < 4000000).sum
 
   /**
    * Largest prime factor
