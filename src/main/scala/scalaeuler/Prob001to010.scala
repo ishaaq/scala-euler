@@ -241,5 +241,5 @@ object Prob001to010 {
    *
    * Find the sum of all the primes below two million.
    */
-  def prob010: Long = ???
+  def prob010: Long = primes.takeWhile(_<2000000).sum
 }
