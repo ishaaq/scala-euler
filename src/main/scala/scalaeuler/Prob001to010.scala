@@ -196,7 +196,42 @@ object Prob001to010 {
    * There exists exactly one Pythagorean triplet for which a + b + c = 1000.
    * Find the product abc.
    */
-  def prob009: Long = ???
+  def prob009: Long = {
+    /** based on Euclid's formula. See http://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple */
+    def pythTriples(limit: Long) = {
+      import scala.math.{floor, sqrt}
+      // by Euclid's formula, with m>n
+      // a = m^2 - n^2, b = 2mn, c = m^2 - n^2
+      // if a + b + c <= limit
+      // => m^2 - n^2 + 2mn + m^2 - n^2 <= limit
+      // => 2m(m+n) <= limit
+      // => m(m+n) <= limit/2
+      // => m < sqrt(limit/2) and, since n<m, by implication n < sqrt(limit/2)
+      val l = floor(sqrt(limit/2)).toLong
+      for(n <- 1L to l;
+          m <- (n + 1L) to l;
+          m2 = m * m;
+          n2 = n * n;
+          a = m2 - n2;
+          b = 2 * m * n;
+          c = m2 + n2) yield (a, b, c)
+    }
+
+    pythTriples(1000).filter { case (a, b, c) => a + b + c == 1000 }
+           .map { case (a, b, c) => a * b * c }
+           .head
+  }
+
+  def prob009_bruteforce: Long = { // naive brute force takes long to complete
+    val triples = for (a <- (1 to 1000);
+         b <- (a to 1000);
+         c <- (b to 1000) if (a*a + b*b == c*c))
+       yield (a, b, c)
+    triples.filter { case (a, b, c) => a + b + c == 1000 }
+           .map { case (a, b, c) => a * b * c }
+           .head
+  }
+
 
   /**
    * Summation of primes
