@@ -29,4 +29,20 @@ object Maths {
   }
 
   def lcm(a: Long, b: Long): Long = a * b / gcd(a, b)
+
+  def primeFactors(n: Long) = {
+    val sqrtN = scala.math.sqrt(n)
+    val candidatePrimes = primes.takeWhile(_ <= sqrtN)
+
+    @tailrec
+    def factorise(num: Long, pFactors: List[Long], candidates: Stream[Long]): List[Long] = candidates match {
+      case _ if num == 1 => pFactors
+      case Stream() if pFactors.size == 0 => List(num) // num is a prime
+      case Stream() => pFactors
+      case p #:: ps if num % p == 0 => factorise(num / p, p :: pFactors, candidates)
+      case _ => factorise(num, pFactors, candidates.tail)
+    }
+
+    factorise(n, List(), candidatePrimes)
+  }
 }

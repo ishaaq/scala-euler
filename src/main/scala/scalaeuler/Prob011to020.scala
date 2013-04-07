@@ -106,7 +106,23 @@ object Prob011to020 {
    *
    * What is the value of the first triangle number to have over five hundred divisors?
    */
-  def prob012: Long = ???
+  def prob012: Long = {
+    import Maths.{primeFactors, positiveIntegers}
+    def numFactors(n: Long) = {
+      val pFactors = primeFactors(n)
+      // assume the prime factorisation of n:
+      //    p1^x1 * p2^x2 ... pn^xn
+      // then, taking the prime p1, we find that there are x1 + 1 exponents of p1 that are divisors of n:
+      //    p1^0, p1^1, p1^2, p1^3....p1^x1
+      // therefore, considering all the other primes p2..pn similarly we get the total number of divisors:
+      //    (x1 + 1) * (x2 + 1) * .... * (xn + 1)
+      pFactors.groupBy(identity).map { case (_, pList) => pList.length + 1}.product
+    }
+
+    val triangleNums = positiveIntegers.map { n => n * (n + 1) / 2 }
+
+    triangleNums.filter(numFactors(_) >= 500).head
+  }
 
   /**
    * Large sum
