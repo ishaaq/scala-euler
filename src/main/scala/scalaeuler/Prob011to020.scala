@@ -404,7 +404,7 @@ object Prob011to020 {
    *
    * What is the sum of the digits of the number 2^1000?
    */
-  def prob016: Long = ???
+  def prob016: Long = BigInt(2).pow(1000).toString.map(_ - '0').sum
 
   /**
    * Number letter counts
