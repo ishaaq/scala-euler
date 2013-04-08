@@ -45,4 +45,13 @@ object Maths {
 
     factorise(n, List(), candidatePrimes)
   }
+
+  lazy val factorials: Stream[BigInt] = Stream.cons(BigInt(1L), positiveIntegers.tail.zip(factorials).map { case (a,b) => b * BigInt(a) })
+  def factorial(n: Int) = factorials(n - 1)
+
+  /**
+   * See http://en.wikipedia.org/wiki/Combination
+   * (n choose k) = n!/(k! * (n - k)!)
+   */
+  def numCombinations(n: Int, k: Int) = factorial(n) / (factorial(k) * factorial(n - k))
 }

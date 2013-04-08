@@ -389,7 +389,12 @@ object Prob011to020 {
    *
    * How many routes are there through a 20 * 20 grid?
    */
-  def prob015: Long = ???
+  // This is actually a simple combination problem https://en.wikipedia.org/wiki/Combination
+  // Each route consists of 40 steps: 20 horizontal and 20 vertical steps
+  // The different routes can be enumerated simply by working out how many ways one
+  // can choose 20 horizontal steps out of a total of 40. Or in other words, our answer
+  // is (n choose k)
+  def prob015: Long = Maths.numCombinations(40, 20).toLong
 
   /**
    * Power digit sum
