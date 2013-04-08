@@ -1,6 +1,7 @@
 package scalaeuler
 
 import Util.???
+import scala.annotation.tailrec
 
 object Prob011to020 {
   /**
@@ -354,7 +355,30 @@ object Prob011to020 {
    *
    * NOTE: Once the chain starts the terms are allowed to go above one million.
    */
-  def prob014: Long = ???
+  def prob014: Long = {
+    def nextNum(n: Long) = {
+      if (n % 2 == 0) n / 2
+      else 3 * n + 1
+    }
+
+    val limit = 1000000L
+    // TODO: haven't found a pure functional solution that is also performant so using a mutable Map for
+    // the time being
+    val seqLengths = scala.collection.mutable.Map(1L -> 1L)
+
+    @tailrec
+    def computeSeqLength(n: Long, next: Long, acc: Long): Long = seqLengths.get(next) match {
+      case Some(nextSeqLength) => acc + nextSeqLength
+      case None => computeSeqLength(n, nextNum(next), acc + 1)
+    }
+
+    for (n <- 2L to (limit - 1)) {
+      seqLengths(n) = computeSeqLength(n, nextNum(n), 1)
+    }
+
+    seqLengths.maxBy(_._2)._1
+  }
+
 
   /**
    * Lattice paths
